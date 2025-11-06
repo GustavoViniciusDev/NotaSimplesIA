@@ -26,7 +26,7 @@ export default function BetaSignup() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
+      transition: { duration: 0.6 },
     },
   }
 
@@ -35,7 +35,7 @@ export default function BetaSignup() {
     visible: (index: number) => ({
       opacity: 1,
       x: 0,
-      transition: { duration: 0.4, delay: index * 0.1, ease: "easeOut" },
+      transition: { duration: 0.4, delay: index * 0.1},
     }),
   }
 

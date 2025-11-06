@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { ThemeToggle } from "./theme-toggle" 
 
 export default function Header() {
   return (
@@ -16,6 +17,7 @@ export default function Header() {
         </Link>
 
         <div className="flex items-center gap-3 md:gap-4">
+          <ThemeToggle />
           <Link
             href="#"
             className="text-sm text-foreground/70 hover:text-foreground transition-colors hidden sm:inline-block"

@@ -27,7 +27,7 @@ export default function RealInterestTest() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
+      transition: { duration: 0.6 },
     },
   }
 
@@ -56,7 +56,7 @@ export default function RealInterestTest() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="bg-white rounded-2xl shadow-lg p-8 md:p-10 border border-border"
+          className="bg-card rounded-2xl shadow-lg p-8 md:p-10 border border-border"
         >
           {showCheckout ? (
             submitted ? (
