@@ -1,33 +1,38 @@
 "use client"
 
-import type React from "react"
-
 import { useState } from "react"
+import { useGoogleReCaptcha, GoogleReCaptchaProvider } from "react-google-recaptcha-v3"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import { Mail, User, Briefcase, CheckCircle } from "lucide-react"
 
-export default function BetaSignup() {
+export default function BetaSignupForm() {
   const [formData, setFormData] = useState({ name: "", email: "", profession: "" })
   const [submitted, setSubmitted] = useState(false)
+  const { executeRecaptcha } = useGoogleReCaptcha()
 
-  const handleSubmit = (e: React.FormEvent) => {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    // Simulate submission
-    setSubmitted(true)
-    setTimeout(() => {
+    if (!executeRecaptcha) return alert("reCAPTCHA não carregou ainda")
+
+    const token = await executeRecaptcha("waitlist_signup")
+    const res = await fetch("/api/waitlist", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ...formData, recaptchaToken: token }),
+    })
+
+    if (res.ok) {
+      setSubmitted(true)
       setFormData({ name: "", email: "", profession: "" })
-      setSubmitted(false)
-    }, 3000)
+    } else {
+      console.error("Erro ao enviar dados")
+    }
   }
 
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 },
-    },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   }
 
   const inputVariants = {
@@ -35,7 +40,7 @@ export default function BetaSignup() {
     visible: (index: number) => ({
       opacity: 1,
       x: 0,
-      transition: { duration: 0.4, delay: index * 0.1},
+      transition: { duration: 0.4, delay: index * 0.1 },
     }),
   }
 
@@ -86,13 +91,8 @@ export default function BetaSignup() {
             </motion.div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
-              <motion.div
-                custom={0}
-                variants={inputVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-              >
+              {/* Campo nome */}
+              <motion.div custom={0} variants={inputVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                 <label className="block text-sm font-semibold text-foreground mb-2">Nome</label>
                 <div className="relative">
                   <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-primary/60" />
@@ -107,13 +107,8 @@ export default function BetaSignup() {
                 </div>
               </motion.div>
 
-              <motion.div
-                custom={1}
-                variants={inputVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-              >
+              {/* Campo e-mail */}
+              <motion.div custom={1} variants={inputVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                 <label className="block text-sm font-semibold text-foreground mb-2">E-mail</label>
                 <div className="relative">
                   <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-primary/60" />
@@ -128,13 +123,8 @@ export default function BetaSignup() {
                 </div>
               </motion.div>
 
-              <motion.div
-                custom={2}
-                variants={inputVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-              >
+              {/* Campo profissão */}
+              <motion.div custom={2} variants={inputVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                 <label className="block text-sm font-semibold text-foreground mb-2">Profissão</label>
                 <div className="relative">
                   <Briefcase className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-primary/60" />
@@ -155,18 +145,9 @@ export default function BetaSignup() {
                 </div>
               </motion.div>
 
-              <motion.div
-                custom={3}
-                variants={inputVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-              >
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold transition-all"
-                >
+              {/* Botão */}
+              <motion.div custom={3} variants={inputVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+                <Button type="submit" size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold transition-all">
                   Entrar na lista de espera
                 </Button>
               </motion.div>
@@ -181,3 +162,4 @@ export default function BetaSignup() {
     </section>
   )
 }
+

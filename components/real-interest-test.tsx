@@ -1,34 +1,46 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
+import { useGoogleReCaptcha, GoogleReCaptchaProvider } from "react-google-recaptcha-v3"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import { CreditCard, CheckCircle, Info } from "lucide-react"
 
-export default function RealInterestTest() {
+export default function RealInterestTestForm() {
   const [showCheckout, setShowCheckout] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [formData, setFormData] = useState({ name: "", email: "" })
+  const { executeRecaptcha } = useGoogleReCaptcha()
 
-  const handlePreSubscribe = (e: React.FormEvent) => {
+  async function handlePreSubscribe(e: React.FormEvent) {
     e.preventDefault()
-    setSubmitted(true)
-    setTimeout(() => {
-      setShowCheckout(false)
-      setFormData({ name: "", email: "" })
-      setSubmitted(false)
-    }, 3000)
+  if (!executeRecaptcha) return alert("reCAPTCHA não carregou ainda")
+
+    // Gera o token de segurança
+    const token = await executeRecaptcha("real_interest")
+
+    try {
+      const res = await fetch("/api/realinterest", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...formData, recaptchaToken: token }),
+      })
+
+      if (res.ok) {
+        setSubmitted(true)
+        setFormData({ name: "", email: "" })
+      } else {
+        console.error("Erro ao salvar interesse real")
+      }
+    } catch (err) {
+      console.error("Erro de rede ao enviar:", err)
+    }
   }
 
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 },
-    },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   }
 
   return (
@@ -73,7 +85,9 @@ export default function RealInterestTest() {
                 >
                   <CheckCircle className="w-16 h-16 text-green-500 mx-auto" />
                 </motion.div>
-                <h3 className="text-2xl font-bold text-foreground mb-2">Uau! Você confirmou interesse real!</h3>
+                <h3 className="text-2xl font-bold text-foreground mb-2">
+                  Uau! Você confirmou interesse real!
+                </h3>
                 <p className="text-foreground/70">
                   💰 Você confirmou interesse no plano Pro. Obrigado por apoiar o projeto!
                 </p>
@@ -82,7 +96,9 @@ export default function RealInterestTest() {
               <motion.form onSubmit={handlePreSubscribe} className="space-y-6">
                 <div className="bg-primary/5 border border-primary/20 rounded-lg p-4 flex items-start gap-3 mb-6">
                   <Info className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                  <p className="text-sm text-foreground/80">Essa é apenas uma simulação, sem cobrança real.</p>
+                  <p className="text-sm text-foreground/80">
+                    Essa é apenas uma simulação, sem cobrança real.
+                  </p>
                 </div>
 
                 <div>
@@ -142,7 +158,7 @@ export default function RealInterestTest() {
               <div>
                 <h3 className="text-xl font-bold text-foreground mb-2">Teste seu interesse real</h3>
                 <p className="text-foreground/70">
-                  Confirm que você teria interesse em pagar pelo NotaSimples. Isso nos ajuda a validar se a ideia é
+                  Confirme que você teria interesse em pagar pelo NotaSimples. Isso nos ajuda a validar se a ideia é
                   viável.
                 </p>
               </div>
@@ -163,7 +179,9 @@ export default function RealInterestTest() {
                 Confirmar interesse real
               </Button>
 
-              <p className="text-sm text-foreground/60">Sem compromisso. Cancelável a qualquer momento.</p>
+              <p className="text-sm text-foreground/60">
+                Sem compromisso. Cancelável a qualquer momento.
+              </p>
             </motion.div>
           )}
         </motion.div>
@@ -171,3 +189,5 @@ export default function RealInterestTest() {
     </section>
   )
 }
+
+
