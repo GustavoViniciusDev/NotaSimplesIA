@@ -58,7 +58,7 @@ export default function RealInterestTestForm() {
           </h2>
           <p className="text-lg text-foreground/70">
             Liberamos inscrições antecipadas para o plano Pro a{" "}
-            <span className="font-semibold text-primary">R$ 9,90</span> — apenas para validar o interesse real de
+            <span className="font-semibold text-primary">R$ 7,98 (80% OFF)</span> — apenas para validar o interesse real de
             pagamento.
           </p>
         </motion.div>
@@ -139,7 +139,7 @@ export default function RealInterestTestForm() {
                   size="lg"
                   className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
                 >
-                  Pré-inscrever no Pro por R$ 9,90
+                  Pré-inscrever no Pro por R$ 7,98
                 </Button>
 
                 <Button
@@ -167,7 +167,7 @@ export default function RealInterestTestForm() {
                 className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-xl p-6"
                 whileHover={{ scale: 1.02 }}
               >
-                <p className="text-2xl font-bold text-foreground mb-1">R$ 9,90</p>
+                <p className="text-2xl font-bold text-foreground mb-1">R$ 7,98</p>
                 <p className="text-sm text-foreground/70">Acesso antecipado — 80% de desconto</p>
               </motion.div>
 

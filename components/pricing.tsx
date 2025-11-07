@@ -15,32 +15,33 @@ const plans = [
   },
   {
     name: "Pro",
-    price: "R$ 19,90",
+    price: "R$ 39,90",
     period: "/mês",
     description: "Para freelancers",
     features: [
-      "Notas ilimitadas",
-      "Relatórios automáticos",
-      "Alertas de vencimento",
-      "Suporte prioritário",
-      "Integração com banco de dados",
-      "Historico completo",
+      "Emissão automática de notas e recibos (via IA)",
+      "Preenchimento fiscal inteligente",
+      "Histórico completo de emissões",
+      "Relatórios simples de faturamento",
+      "Geração de comprovantes e recibos em PDF",
+      "Organização por cliente e serviço",
+      "Exportação de dados (CSV / PDF)",
     ],
     cta: "Começar grátis",
     highlighted: true,
   },
   {
     name: "Business",
-    price: "R$ 49,90",
+    price: "R$ 129,90",
     period: "/mês",
     description: "Para empresas",
     features: [
       "Tudo do plano Pro",
-      "Múltiplos usuários",
-      "API customizada",
-      "Suporte 24/7",
-      "Relatórios avançados",
-      "Faturamento customizado",
+      "Painel com visão mensal consolidada",
+      "Emissão em lote (várias notas de uma vez)",
+      "Relatórios detalhados de clientes e serviços",
+      "Faturamento e acompanhamento por centro de custo",
+      "Prioridade na liberação de novas integrações",
     ],
     cta: "Começar grátis",
     highlighted: false,
@@ -96,12 +97,13 @@ export default function Pricing() {
                   size="lg"
                   className={`w-full mb-8 ${
                     plan.highlighted
-                      ? "bg-primary hover:bg-primary/90 text-primary-foreground"
+                      ? "bg-primary text-primary-foreground hover:scale-[1.02] transition-transform"
                       : "bg-foreground/10 hover:bg-foreground/20 text-foreground border border-foreground/20"
                   }`}
                 >
                   <Link href="#">{plan.cta}</Link>
                 </Button>
+
 
                 <div className="space-y-4 flex-1">
                   {plan.features.map((feature, featureIndex) => (
