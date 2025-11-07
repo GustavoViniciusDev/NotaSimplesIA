@@ -88,7 +88,7 @@ Queremos simplificar a vida de quem vive de trabalho independente, ajudando voc�
 - **Next.js 15 + TypeScript**  
 - **TailwindCSS**  
 - **DeepSeek / OpenAI API**  
-- **Prisma + PostgreSQL**  
+- **Supabase + PostgreSQL**  
 - **NextAuth + Clerk (Autenticação)**  
 
 ---
