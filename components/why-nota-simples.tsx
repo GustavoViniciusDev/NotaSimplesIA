@@ -26,10 +26,10 @@ export default function WhyNotaSimples() {
       <div className="max-w-6xl mx-auto px-4 md:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">
-            Por que usar o NotaSimples IA
+            Por que escolher o NotaSimples IA
           </h2>
           <p className="text-lg text-foreground/70 max-w-2xl mx-auto text-balance">
-            Simplifique sua vida com automação inteligente e controle total
+            Economize tempo, evite erros e tenha controle total das suas emissões.
           </p>
         </div>
 

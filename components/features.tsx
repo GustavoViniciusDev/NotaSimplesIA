@@ -5,17 +5,17 @@ import { MessageSquare, Zap, TrendingUp } from "lucide-react"
 const features = [
   {
     icon: MessageSquare,
-    title: "IA que entende o que você diz",
+    title: "IA que entende o que você fala",
     description: "Gera sua nota automaticamente com comandos em linguagem natural",
   },
   {
     icon: Zap,
-    title: "Preenchimento automático e cálculos instantâneos",
+    title: "Campos automáticos e cálculos em tempo real",
     description: "Economize tempo com automação inteligente de todos os campos",
   },
   {
     icon: TrendingUp,
-    title: "Relatórios e alertas automáticos",
+    title: "Relatórios e alertas inteligentes",
     description: "Acompanhe seu faturamento com insights em tempo real",
   },
 ]
@@ -27,7 +27,7 @@ export default function Features() {
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">Tudo que você precisa</h2>
           <p className="text-lg text-foreground/70 text-balance max-w-2xl mx-auto">
-            Recursos poderosos para automatizar sua gestão fiscal e focar no que realmente importa
+            Recursos inteligentes para você economizar tempo e deixar a burocracia no passado.
           </p>
         </div>
 

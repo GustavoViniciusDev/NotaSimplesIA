@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { ArrowRight } from "lucide-react"
-import Link from "next/link"
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -12,26 +12,30 @@ export default function Hero() {
           <div className="space-y-8">
             <div className="space-y-6">
               <div className="inline-block bg-secondary/60 text-secondary-foreground text-xs font-semibold px-3 py-1 rounded-full">
-                Automatize sua gestão fiscal
+                Sua gestão fiscal no piloto automático.
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-balance leading-tight text-foreground">
-                Gere notas e recibos com IA em segundos
+               Gere notas e recibos em segundos com IA
               </h1>
               <p className="text-lg md:text-xl text-foreground/70 text-balance leading-relaxed">
-                O jeito inteligente e automático de cuidar da parte chata do seu trabalho. Deixe a IA fazer o trabalho
-                pesado.
+                Diga adeus à burocracia — deixe a IA cuidar da parte chata pra você.
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground gap-2">
+              <Button
+                size="lg"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground gap-2"
+              >
                 <Link href="#" className="flex items-center gap-2">
                   Comece grátis agora
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </Button>
               <Button size="lg" variant="outline">
-                Ver demo
+                <Link href="/dashboard" className="flex items-center gap-2">
+                  Ver demo
+                </Link>
               </Button>
             </div>
 
@@ -72,5 +76,5 @@ export default function Hero() {
         </div>
       </div>
     </section>
-  )
+  );
 }

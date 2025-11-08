@@ -55,11 +55,10 @@ export default function BetaSignupForm() {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">
-            Valide o interesse — sem produto ainda
+            Participe do teste beta do NotaSimples IA
           </h2>
           <p className="text-lg text-foreground/70">
-            Estamos testando uma ideia de IA que gera notas fiscais e recibos automaticamente — algo que freelancers
-            pediram há tempos. Quer testar o beta?
+            Estamos criando uma IA que gera notas e recibos automaticamente — e queremos seu feedback. Cadastre-se para testar antes do lançamento.
           </p>
         </motion.div>
 

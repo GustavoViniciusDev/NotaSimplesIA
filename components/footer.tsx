@@ -12,7 +12,7 @@ export default function Footer() {
               <div className="w-5 h-5 bg-gradient-to-br from-primary to-primary/70 rounded-md" />
               NotaSimples IA
             </div>
-            <p className="text-sm text-foreground/70">Automatize sua gestão fiscal com IA.</p>
+            <p className="text-sm text-foreground/70">Sua gestão fiscal no piloto automático.</p>
           </div>
 
           <div className="space-y-4">

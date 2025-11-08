@@ -54,10 +54,10 @@ export default function Pricing() {
       <div className="max-w-6xl mx-auto px-4 md:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">
-            Planos simples e transparentes
+            Planos simples e sem burocracia
           </h2>
           <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
-            Escolha o plano perfeito para seu negócio. Cancele a qualquer momento.
+            Escolha o ideal para você. Comece grátis e cancele quando quiser.
           </p>
         </div>
 
@@ -116,13 +116,6 @@ export default function Pricing() {
               </div>
             </div>
           ))}
-        </div>
-
-        <div className="mt-16 text-center">
-          <p className="text-foreground/70 mb-2">Precisa de algo customizado?</p>
-          <Link href="#" className="text-primary hover:text-primary/80 font-semibold transition-colors">
-            Entre em contato com nossa equipe →
-          </Link>
         </div>
       </div>
     </section>
